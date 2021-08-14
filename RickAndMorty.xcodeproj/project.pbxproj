@@ -16,6 +16,9 @@
 		958AC13C26C803ED009FAD55 /* SectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958AC13B26C803ED009FAD55 /* SectionCollectionViewCell.swift */; };
 		958AC13E26C8046B009FAD55 /* SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958AC13D26C8046B009FAD55 /* SectionModel.swift */; };
 		958AC14026C8070D009FAD55 /* SectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958AC13F26C8070D009FAD55 /* SectionPresenter.swift */; };
+		958AC14226C829FA009FAD55 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 958AC14126C829FA009FAD55 /* Colors.xcassets */; };
+		958AC14526C82E81009FAD55 /* CharacterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958AC14426C82E81009FAD55 /* CharacterCollectionViewController.swift */; };
+		958AC14726C82E99009FAD55 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958AC14626C82E99009FAD55 /* CharacterCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		958AC13B26C803ED009FAD55 /* SectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		958AC13D26C8046B009FAD55 /* SectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionModel.swift; sourceTree = "<group>"; };
 		958AC13F26C8070D009FAD55 /* SectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionPresenter.swift; sourceTree = "<group>"; };
+		958AC14126C829FA009FAD55 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		958AC14426C82E81009FAD55 /* CharacterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewController.swift; sourceTree = "<group>"; };
+		958AC14626C82E99009FAD55 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,14 +72,25 @@
 				958AC12726C802DD009FAD55 /* SceneDelegate.swift */,
 				958AC12B26C802DD009FAD55 /* Main.storyboard */,
 				958AC12E26C802DE009FAD55 /* Assets.xcassets */,
+				958AC14126C829FA009FAD55 /* Colors.xcassets */,
 				958AC13026C802DE009FAD55 /* LaunchScreen.storyboard */,
 				958AC13326C802DE009FAD55 /* Info.plist */,
+				958AC14326C82DD0009FAD55 /* Section Screen */,
+				958AC14626C82E99009FAD55 /* CharacterCollectionViewCell.swift */,
+				958AC14426C82E81009FAD55 /* CharacterCollectionViewController.swift */,
+			);
+			path = RickAndMorty;
+			sourceTree = "<group>";
+		};
+		958AC14326C82DD0009FAD55 /* Section Screen */ = {
+			isa = PBXGroup;
+			children = (
 				958AC13926C803D7009FAD55 /* SectionCollectionViewController.swift */,
 				958AC13B26C803ED009FAD55 /* SectionCollectionViewCell.swift */,
 				958AC13D26C8046B009FAD55 /* SectionModel.swift */,
 				958AC13F26C8070D009FAD55 /* SectionPresenter.swift */,
 			);
-			path = RickAndMorty;
+			path = "Section Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				958AC13226C802DE009FAD55 /* LaunchScreen.storyboard in Resources */,
+				958AC14226C829FA009FAD55 /* Colors.xcassets in Resources */,
 				958AC12F26C802DE009FAD55 /* Assets.xcassets in Resources */,
 				958AC12D26C802DD009FAD55 /* Main.storyboard in Resources */,
 			);
@@ -146,11 +164,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				958AC14726C82E99009FAD55 /* CharacterCollectionViewCell.swift in Sources */,
 				958AC12626C802DD009FAD55 /* AppDelegate.swift in Sources */,
 				958AC13A26C803D7009FAD55 /* SectionCollectionViewController.swift in Sources */,
 				958AC13C26C803ED009FAD55 /* SectionCollectionViewCell.swift in Sources */,
 				958AC13E26C8046B009FAD55 /* SectionModel.swift in Sources */,
 				958AC14026C8070D009FAD55 /* SectionPresenter.swift in Sources */,
+				958AC14526C82E81009FAD55 /* CharacterCollectionViewController.swift in Sources */,
 				958AC12826C802DD009FAD55 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

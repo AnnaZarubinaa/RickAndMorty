@@ -6,8 +6,6 @@ protocol SectionView {
     func onItemsRetrieval(data: SectionModel)
 }
 
-
-
 class SectionCollectionViewController: UICollectionViewController, SectionView {
 
     var presenter = SectionPresenter(model: SectionModel())
@@ -98,10 +96,20 @@ extension SectionCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SectionCollectionViewCell
     
-        cell.sectionLabel.text = sections.sectionsName[indexPath.row]
-        cell.sectionImageView.image = UIImage(named: sections.sectionsImages[indexPath.row])
+        cell.sectionCellLabel.text = sections.sectionsName[indexPath.row]
+        cell.sectionCellImageView.image = UIImage(named: sections.sectionsImages[indexPath.row])
         cell.layer.cornerRadius = 18.0
         
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            performSegue(withIdentifier: "Characters", sender: nil)
+        } else if indexPath.row == 1 {
+            performSegue(withIdentifier: "Locations", sender: nil)
+        } else if indexPath.row == 2{
+            performSegue(withIdentifier: "Episodes", sender: nil)
+        }
     }
 }

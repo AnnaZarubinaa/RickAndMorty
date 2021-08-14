@@ -8,7 +8,7 @@
 import UIKit
 
 class SectionCollectionViewCell: UICollectionViewCell {
-    @IBOutlet var sectionImageView: UIImageView!
+    @IBOutlet var sectionCellImageView: UIImageView!
     
-    @IBOutlet var sectionLabel: UILabel!
+    @IBOutlet var sectionCellLabel: UILabel!
 }
