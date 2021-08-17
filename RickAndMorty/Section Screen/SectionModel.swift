@@ -1,5 +1,11 @@
 import Foundation
 
+protocol APIRequest {
+    associatedtype Response
+
+    func decodeResponse(data: Data) throws -> Response
+}
+
 struct SectionModel {
     
     let sectionsName = ["Characters", "Locations", "Episodes"]
@@ -18,6 +24,17 @@ struct SectionURL: Codable {
         episodes = ""
         locations = ""
         characters = ""
+    }
+}
+
+
+
+public struct SectionInfoApiRequest: APIRequest {
+    typealias Response = SectionURL
+    
+    func decodeResponse(data: Data) throws -> Response {
+        let sectionInfo = try JSONDecoder().decode(Response.self, from: data)
+        return sectionInfo
     }
 }
 

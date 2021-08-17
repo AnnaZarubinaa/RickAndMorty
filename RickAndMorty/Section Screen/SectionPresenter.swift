@@ -1,36 +1,32 @@
 import Foundation
 
-protocol SectionViewPresenter {
-    //init(view: SectionView)
-    func viewDidLoad()
-    func selectItem(with title: String)
-}
+//protocol SectionViewPresenter {
+//    //init(view: SectionView)
+//    func viewDidLoad()
+//    func didSelectItem(indexPath: IndexPath)
+//}
 
-class SectionPresenter: SectionViewPresenter {
+class SectionPresenter {
     
     var sectionView: SectionView? //need to be weak
     var sections : SectionModel
     
-    required init (model: SectionModel) {
+    required init (model: SectionModel ) {
         self.sections = model
     }
     
-    func attachView(_ attach: Bool, view: SectionView?) {
-            if attach {
-                sectionView = nil
-            } else {
-                if let vew = view { sectionView = view }
-            }
-        }
+    func attachView(view: SectionView?) {
+        self.sectionView = view
+    }
     
     func viewDidLoad() {
         print("View notifies the Presenter that it has loaded.")
         retrieveURLs()
     }
     
-    func selectItem(with title: String) {
+    func didSelectItem(indexPath: IndexPath) {
         print("View notifies the Presenter that an add button was tapped.")
-        //addItem(title: title) // переход на другой экран
+        sectionView?.openNewScreen(indexPath: indexPath)
     }
     
     
@@ -38,8 +34,21 @@ class SectionPresenter: SectionViewPresenter {
     private func retrieveURLs() {
         print("Presenter retrieves Item objects from the Database.")
 
-        //  получение данных с сервера
-        sectionView?.onItemsRetrieval(data: sections)
+        let sectionInfoRequest = SectionInfoApiRequest()
+        NetworkService.shared.fetchData(sectionInfoRequest, url: NetworkService.shared.baseURL) {
+            (result) in
+                switch result {
+                case .success(let sectionUrl):
+                    SectionURL.shared.characters = sectionUrl.characters
+                    SectionURL.shared.episodes = sectionUrl.episodes
+                    SectionURL.shared.locations = sectionUrl.locations
+                    print(SectionURL.shared)
+                case .failure(let error):
+                    print(error)
+            }
+        }
+        
+        //sectionView?.onItemsRetrieval(data: sections)
     }
     
 }

@@ -4,24 +4,20 @@ private let reuseIdentifier = "SectionCell"
 
 protocol SectionView {
     func onItemsRetrieval(data: SectionModel)
+    func openNewScreen(indexPath: IndexPath)
 }
 
-class SectionCollectionViewController: UICollectionViewController, SectionView {
+class SectionCollectionViewController: UICollectionViewController {
 
-    var presenter = SectionPresenter(model: SectionModel())
-    var sections = SectionModel()
-
+    var sectionPresenter = SectionPresenter(model: SectionModel())
     
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.setCollectionViewLayout(generateLayoutForPortraitMode(), animated: false)
 
-        presenter.viewDidLoad()
+        sectionPresenter.attachView( view: self)
+        sectionPresenter.viewDidLoad()
     }
     
     func generateLayoutForPortraitMode() -> UICollectionViewLayout {
@@ -55,55 +51,16 @@ class SectionCollectionViewController: UICollectionViewController, SectionView {
         return layout
     }
     
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
+extension SectionCollectionViewController: SectionView {
     func onItemsRetrieval(data: SectionModel) {
         print("View recieves the result from the Presenter.")
-        self.sections = data
+        sectionPresenter.sections = data
         self.collectionView.reloadData()
     }
     
-}
-
-//extension SectionCollectionViewController: SectionView {
-//    func onItemsRetrieval(data: SectionModel) {
-//        print("View recieves the result from the Presenter.")
-//        self.sections = data
-//        self.collectionView.reloadData()
-//    }
-//
-//
-//}
-
-extension SectionCollectionViewController {
-    
-    // MARK: UICollectionViewDataSource
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return sections.sectionsName.count
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SectionCollectionViewCell
-    
-        cell.sectionCellLabel.text = sections.sectionsName[indexPath.row]
-        cell.sectionCellImageView.image = UIImage(named: sections.sectionsImages[indexPath.row])
-        cell.layer.cornerRadius = 18.0
-        
-        return cell
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func openNewScreen(indexPath: IndexPath){
         if indexPath.row == 0 {
             performSegue(withIdentifier: "Characters", sender: nil)
         } else if indexPath.row == 1 {
@@ -111,5 +68,29 @@ extension SectionCollectionViewController {
         } else if indexPath.row == 2{
             performSegue(withIdentifier: "Episodes", sender: nil)
         }
+    }
+}
+
+extension SectionCollectionViewController {
+    
+    // MARK: UICollectionViewDataSource
+
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of items
+        return sectionPresenter.sections.sectionsName.count
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SectionCollectionViewCell
+    
+        cell.sectionCellLabel.text = sectionPresenter.sections.sectionsName[indexPath.row]
+        cell.sectionCellImageView.image = UIImage(named: sectionPresenter.sections.sectionsImages[indexPath.row])
+        cell.layer.cornerRadius = 18.0
+        
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        sectionPresenter.didSelectItem(indexPath: indexPath)
     }
 }

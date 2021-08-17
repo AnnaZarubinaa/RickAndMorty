@@ -19,6 +19,7 @@
 		958AC14226C829FA009FAD55 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 958AC14126C829FA009FAD55 /* Colors.xcassets */; };
 		958AC14526C82E81009FAD55 /* CharacterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958AC14426C82E81009FAD55 /* CharacterCollectionViewController.swift */; };
 		958AC14726C82E99009FAD55 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958AC14626C82E99009FAD55 /* CharacterCollectionViewCell.swift */; };
+		95D5FCBF26CBB191000BDF4C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D5FCBE26CBB191000BDF4C /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		958AC14126C829FA009FAD55 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		958AC14426C82E81009FAD55 /* CharacterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewController.swift; sourceTree = "<group>"; };
 		958AC14626C82E99009FAD55 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
+		95D5FCBE26CBB191000BDF4C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +78,8 @@
 				958AC13026C802DE009FAD55 /* LaunchScreen.storyboard */,
 				958AC13326C802DE009FAD55 /* Info.plist */,
 				958AC14326C82DD0009FAD55 /* Section Screen */,
-				958AC14626C82E99009FAD55 /* CharacterCollectionViewCell.swift */,
-				958AC14426C82E81009FAD55 /* CharacterCollectionViewController.swift */,
+				95D5FCC026CBC4EF000BDF4C /* Characters Screen */,
+				95D5FCBE26CBB191000BDF4C /* NetworkService.swift */,
 			);
 			path = RickAndMorty;
 			sourceTree = "<group>";
@@ -91,6 +93,15 @@
 				958AC13F26C8070D009FAD55 /* SectionPresenter.swift */,
 			);
 			path = "Section Screen";
+			sourceTree = "<group>";
+		};
+		95D5FCC026CBC4EF000BDF4C /* Characters Screen */ = {
+			isa = PBXGroup;
+			children = (
+				958AC14426C82E81009FAD55 /* CharacterCollectionViewController.swift */,
+				958AC14626C82E99009FAD55 /* CharacterCollectionViewCell.swift */,
+			);
+			path = "Characters Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +179,7 @@
 				958AC12626C802DD009FAD55 /* AppDelegate.swift in Sources */,
 				958AC13A26C803D7009FAD55 /* SectionCollectionViewController.swift in Sources */,
 				958AC13C26C803ED009FAD55 /* SectionCollectionViewCell.swift in Sources */,
+				95D5FCBF26CBB191000BDF4C /* NetworkService.swift in Sources */,
 				958AC13E26C8046B009FAD55 /* SectionModel.swift in Sources */,
 				958AC14026C8070D009FAD55 /* SectionPresenter.swift in Sources */,
 				958AC14526C82E81009FAD55 /* CharacterCollectionViewController.swift in Sources */,
