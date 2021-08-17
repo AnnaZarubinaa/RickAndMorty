@@ -11,7 +11,7 @@ class SectionPresenter {
     var sectionView: SectionView? //need to be weak
     var sections : SectionModel
     
-    required init (model: SectionModel ) {
+    init (model: SectionModel) {
         self.sections = model
     }
     
@@ -20,19 +20,16 @@ class SectionPresenter {
     }
     
     func viewDidLoad() {
-        print("View notifies the Presenter that it has loaded.")
         retrieveURLs()
     }
     
     func didSelectItem(indexPath: IndexPath) {
-        print("View notifies the Presenter that an add button was tapped.")
         sectionView?.openNewScreen(indexPath: indexPath)
     }
     
     
     // MARK: - Private methods
     private func retrieveURLs() {
-        print("Presenter retrieves Item objects from the Database.")
 
         let sectionInfoRequest = SectionInfoApiRequest()
         NetworkService.shared.fetchData(sectionInfoRequest, url: NetworkService.shared.baseURL) {
@@ -47,8 +44,6 @@ class SectionPresenter {
                     print(error)
             }
         }
-        
-        //sectionView?.onItemsRetrieval(data: sections)
     }
     
 }

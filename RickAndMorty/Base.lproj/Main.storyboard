@@ -147,8 +147,8 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="customSize" width="124" height="128"/>
                                 <connections>
-                                    <outlet property="characterCellImageView" destination="hov-XR-4An" id="Tgp-xM-X3o"/>
-                                    <outlet property="characterCellLabel" destination="Axv-BL-XUB" id="5fq-Wn-Wgy"/>
+                                    <outlet property="characterCellImageView" destination="hov-XR-4An" id="cM3-Ip-mjZ"/>
+                                    <outlet property="characterCellLabel" destination="Axv-BL-XUB" id="zzf-TD-rUd"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -163,7 +163,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4c8-51-64m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1609" y="-359"/>
+            <point key="canvasLocation" x="1608.6956521739132" y="-359.59821428571428"/>
         </scene>
         <!--Locations-->
         <scene sceneID="HoM-kO-jSp">

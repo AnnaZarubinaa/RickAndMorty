@@ -9,7 +9,7 @@ protocol SectionView {
 
 class SectionCollectionViewController: UICollectionViewController {
 
-    var sectionPresenter = SectionPresenter(model: SectionModel())
+    let sectionPresenter = SectionPresenter(model: SectionModel())
     
     override func viewDidLoad() {
         super.viewDidLoad()
