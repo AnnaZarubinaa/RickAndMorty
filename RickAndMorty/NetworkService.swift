@@ -11,23 +11,22 @@ class NetworkService {
     
     func fetchData<Request: APIRequest>(_ request: Request, url: String, completion: @escaping (Result<Request.Response, Error>) -> Void) {
         
-        let urlComponents = URLComponents(string: url)!
-        
-        let task = URLSession.shared.dataTask(with: urlComponents.url!) { (data, response, error) in
-                if let data = data {
-                    do {
-                        let decodedResponse = try
-                           request.decodeResponse(data: data)
-                        completion(.success(decodedResponse))
-                    } catch {
+        if let urlComponents = URLComponents(string: url) {
+            let task = URLSession.shared.dataTask(with: urlComponents.url!) { (data, response, error) in
+                    if let data = data {
+                        do {
+                            let decodedResponse = try
+                               request.decodeResponse(data: data)
+                            completion(.success(decodedResponse))
+                        } catch {
+                            completion(.failure(error))
+                        }
+                    } else if let error = error {
                         completion(.failure(error))
                     }
-                } else if let error = error {
-                    completion(.failure(error))
                 }
-            }
-        
-        task.resume()
+            task.resume()
+        }
     }
     
     func fetchImage(from url: String, completion: @escaping (Result<UIImage, Error>) -> Void) {

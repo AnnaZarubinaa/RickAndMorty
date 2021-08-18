@@ -85,7 +85,7 @@ class CharacterCollectionViewController: UICollectionViewController, UISearchRes
     func updateSearchResults(for searchController: UISearchController) {
         characterPresenter.updateSearchResult(for: searchController)
     }
-
+  
     // MARK: UICollectionViewDelegate
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

@@ -101,7 +101,7 @@
         <scene sceneID="Ug9-eh-fPG">
             <objects>
                 <collectionViewController id="oMz-Ww-Xzh" customClass="CharacterCollectionViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ouG-9s-xGr">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" id="ouG-9s-xGr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="Background"/>
@@ -158,12 +158,251 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Characters" leftItemsSupplementBackButton="YES" id="d2H-Ej-Fab">
-                        <barButtonItem key="rightBarButtonItem" title="Filter" image="icons8-filter-100" landscapeImage="icons8-filter-100" id="UuR-0j-wiK"/>
+                        <barButtonItem key="rightBarButtonItem" title="Filter" image="icons8-filter-100" landscapeImage="icons8-filter-100" id="UuR-0j-wiK">
+                            <connections>
+                                <segue destination="sq8-ZB-Oek" kind="show" id="ZTI-RH-R1a"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4c8-51-64m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1608.6956521739132" y="-359.59821428571428"/>
+        </scene>
+        <!--Filter-->
+        <scene sceneID="acj-ik-OOy">
+            <objects>
+                <tableViewController id="sq8-ZB-Oek" customClass="FilterTableViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="6Pr-12-1Gr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="sectionIndexColor" name="Title"/>
+                        <color key="sectionIndexBackgroundColor" name="Background"/>
+                        <color key="sectionIndexTrackingBackgroundColor" name="Background"/>
+                        <sections>
+                            <tableViewSection id="0Tl-vW-EzG">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Header" id="zZD-hm-CVg">
+                                        <rect key="frame" x="20" y="18" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zZD-hm-CVg" id="fC6-E8-96k">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8be-bn-Qpm">
+                                                    <rect key="frame" x="297" y="8" width="57" height="28"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                                    <state key="normal" title="Reset">
+                                                        <color key="titleColor" name="Red"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="resetSection1ButtonTapped:" destination="sq8-ZB-Oek" eventType="touchUpInside" id="uQm-oz-43V"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHz-Yb-djH">
+                                                    <rect key="frame" x="20" y="8" width="68" height="28"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                    <color key="textColor" name="Title"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8be-bn-Qpm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nHz-Yb-djH" secondAttribute="trailing" constant="8" symbolic="YES" id="LOZ-Zd-3ZP"/>
+                                                <constraint firstItem="nHz-Yb-djH" firstAttribute="top" secondItem="fC6-E8-96k" secondAttribute="top" constant="8" id="MSu-7C-TMM"/>
+                                                <constraint firstItem="nHz-Yb-djH" firstAttribute="leading" secondItem="fC6-E8-96k" secondAttribute="leadingMargin" id="bTh-EJ-yX0"/>
+                                                <constraint firstItem="8be-bn-Qpm" firstAttribute="top" secondItem="fC6-E8-96k" secondAttribute="top" constant="8" id="bj4-Jd-sIr"/>
+                                                <constraint firstAttribute="bottom" secondItem="nHz-Yb-djH" secondAttribute="bottom" constant="8" id="hNU-d6-00l"/>
+                                                <constraint firstAttribute="bottom" secondItem="8be-bn-Qpm" secondAttribute="bottom" constant="8" id="iiA-W9-GL5"/>
+                                                <constraint firstItem="8be-bn-Qpm" firstAttribute="firstBaseline" secondItem="nHz-Yb-djH" secondAttribute="firstBaseline" id="lOQ-yG-Vi4"/>
+                                                <constraint firstItem="8be-bn-Qpm" firstAttribute="trailing" secondItem="fC6-E8-96k" secondAttribute="trailingMargin" id="ns1-7i-WTo"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="Background"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterCell" textLabel="mmB-v3-L0u" style="IBUITableViewCellStyleDefault" id="YUp-zw-a9k">
+                                        <rect key="frame" x="20" y="61.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YUp-zw-a9k" id="R38-fj-pFZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Alive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mmB-v3-L0u">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <color key="textColor" name="Text"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="Background"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterCell" textLabel="qTY-lA-uX0" style="IBUITableViewCellStyleDefault" id="tjw-9s-v2S" customClass="FilterTableViewCell" customModule="RickAndMorty" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="105" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tjw-9s-v2S" id="i0f-Pr-9yQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Dead" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qTY-lA-uX0">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <color key="textColor" name="Text"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="Background"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterCell" textLabel="d3y-sv-8kc" style="IBUITableViewCellStyleDefault" id="whn-gg-CIa" customClass="FilterTableViewCell" customModule="RickAndMorty" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="148.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="whn-gg-CIa" id="RUK-Lg-YPa">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Unknown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d3y-sv-8kc">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="Background"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="nEi-VH-yi3">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Header" id="yPS-Sf-keT" customClass="FilterTableViewCell" customModule="RickAndMorty" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="228" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yPS-Sf-keT" id="8IG-1W-k9c">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4af-23-8uJ">
+                                                    <rect key="frame" x="297" y="8" width="57" height="28"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                                    <state key="normal" title="Reset">
+                                                        <color key="titleColor" name="Red"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="resetSection2ButtonTapped:" destination="sq8-ZB-Oek" eventType="touchUpInside" id="IYI-y8-Nl8"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTZ-cD-fdE">
+                                                    <rect key="frame" x="20" y="8" width="76" height="28"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                    <color key="textColor" name="Title"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4af-23-8uJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hTZ-cD-fdE" secondAttribute="trailing" constant="8" symbolic="YES" id="8qx-ea-BTI"/>
+                                                <constraint firstItem="4af-23-8uJ" firstAttribute="top" secondItem="8IG-1W-k9c" secondAttribute="top" constant="8" id="BA6-OW-2XQ"/>
+                                                <constraint firstItem="hTZ-cD-fdE" firstAttribute="leading" secondItem="8IG-1W-k9c" secondAttribute="leadingMargin" id="Sen-3y-QPd"/>
+                                                <constraint firstItem="4af-23-8uJ" firstAttribute="firstBaseline" secondItem="hTZ-cD-fdE" secondAttribute="firstBaseline" id="TYe-pC-ZvE"/>
+                                                <constraint firstAttribute="bottom" secondItem="hTZ-cD-fdE" secondAttribute="bottom" constant="8" id="cvK-bs-0fE"/>
+                                                <constraint firstItem="4af-23-8uJ" firstAttribute="trailing" secondItem="8IG-1W-k9c" secondAttribute="trailingMargin" id="ohn-7v-Wcs"/>
+                                                <constraint firstItem="hTZ-cD-fdE" firstAttribute="top" secondItem="8IG-1W-k9c" secondAttribute="top" constant="8" id="t0A-Om-efm"/>
+                                                <constraint firstAttribute="bottom" secondItem="4af-23-8uJ" secondAttribute="bottom" constant="8" id="uM5-yk-fv2"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="Background"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterCell" textLabel="o76-oI-1PV" style="IBUITableViewCellStyleDefault" id="CSe-BT-WU4" customClass="FilterTableViewCell" customModule="RickAndMorty" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="271.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CSe-BT-WU4" id="nCg-MW-HPl">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Female" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="o76-oI-1PV">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <color key="textColor" name="Text"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="Background"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterCell" textLabel="HlA-Hx-rk3" style="IBUITableViewCellStyleDefault" id="vJH-tW-Gbv" customClass="FilterTableViewCell" customModule="RickAndMorty" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="315" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vJH-tW-Gbv" id="tMW-LY-iOX">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Male" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HlA-Hx-rk3">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <color key="textColor" name="Text"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="Background"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterCell" textLabel="EjV-hQ-dbe" style="IBUITableViewCellStyleDefault" id="ugq-wZ-zUe" customClass="FilterTableViewCell" customModule="RickAndMorty" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="358.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ugq-wZ-zUe" id="Hir-cq-UAQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Genderless" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EjV-hQ-dbe">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="Background"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterCell" textLabel="UI0-uH-aGU" style="IBUITableViewCellStyleDefault" id="dzx-my-lBq" customClass="FilterTableViewCell" customModule="RickAndMorty" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="402" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dzx-my-lBq" id="sUs-Zz-wkd">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Unknown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UI0-uH-aGU">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" name="Background"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="sq8-ZB-Oek" id="Qlr-NP-OcF"/>
+                            <outlet property="delegate" destination="sq8-ZB-Oek" id="8pY-xX-jl4"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Filter" id="Rgg-hM-QYW"/>
+                    <connections>
+                        <outlet property="resetSection1Button" destination="8be-bn-Qpm" id="TF1-3c-sqU"/>
+                        <outlet property="resetSection2Button" destination="4af-23-8uJ" id="jQN-7R-LGl"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V6M-26-Bgc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2380" y="-563"/>
         </scene>
         <!--Locations-->
         <scene sceneID="HoM-kO-jSp">
@@ -198,7 +437,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hf6-l9-41A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2355" y="86"/>
+            <point key="canvasLocation" x="2380" y="86"/>
         </scene>
         <!--Episodes-->
         <scene sceneID="nni-Ja-v1I">
@@ -243,6 +482,12 @@
         </namedColor>
         <namedColor name="CellText">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Red">
+            <color red="0.92000001668930054" green="0.13199999928474426" blue="0.21699999272823334" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Text">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Title">
             <color red="0.60399997234344482" green="0.73900002241134644" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
