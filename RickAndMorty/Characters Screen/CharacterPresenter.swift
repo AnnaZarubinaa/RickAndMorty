@@ -3,7 +3,8 @@ import UIKit
 
 class CharacterPresenter {
     
-    var characterView: CharacterView? //need to be weak
+    weak var characterView: CharacterView?
+    
     
     var characterResponse: CharacterResponseModel
     var charactersImages = [Int : UIImage]()
@@ -12,6 +13,9 @@ class CharacterPresenter {
     lazy var filteredImages = [Int : UIImage]()
     var isbeingFiltered = false
     var isDataRetrieving = false
+    
+    var statusFilters = Set<String>()
+    var genderFilters = Set<String>()
     
     init (model: CharacterResponseModel ) {
         self.characterResponse = model
@@ -25,6 +29,12 @@ class CharacterPresenter {
     func viewDidLoad() {
         retrieveCharacters(from: SectionURL.shared.characters, isFiltered: false)
     }
+
+    func updateFilterData(status: Set<String>, gender: Set<String>) {
+        statusFilters = status
+        genderFilters = gender
+    }
+
     
     func retrieveCharacters(from url: String, isFiltered: Bool) {
         let charactersInfoRequest = CharacterInfoApiRequest()
@@ -79,6 +89,18 @@ class CharacterPresenter {
                 }
             }
         }
+    }
+    
+    func filterCharacters() {
+        guard !statusFilters.isEmpty || !genderFilters.isEmpty else { return }
+            
+        let statusString = "status=" + statusFilters.joined(separator: "&")
+        let genderString = "gender=" + genderFilters.joined(separator: "&")
+        let searchUrl = SectionURL.shared.characters + "?" + statusString + "&" + genderString
+        print("search url \(searchUrl)")
+        isbeingFiltered = true
+        retrieveCharacters(from: searchUrl, isFiltered: true)
+        
     }
     
     func didScroll(scrollView: UIScrollView, collectionViewHeight: CGFloat) {

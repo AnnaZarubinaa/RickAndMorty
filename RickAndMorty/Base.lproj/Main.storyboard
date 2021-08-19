@@ -179,6 +179,19 @@
                         <color key="sectionIndexColor" name="Title"/>
                         <color key="sectionIndexBackgroundColor" name="Background"/>
                         <color key="sectionIndexTrackingBackgroundColor" name="Background"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="F9W-8s-ojB">
+                            <rect key="frame" x="0.0" y="463.5" width="414" height="71"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" name="Background"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                            <color key="tintColor" name="Title"/>
+                            <state key="normal" title="Apply filters">
+                                <color key="titleColor" name="Title"/>
+                            </state>
+                            <connections>
+                                <action selector="applyFilersButtonTapped:" destination="sq8-ZB-Oek" eventType="touchUpInside" id="YyZ-72-tAC"/>
+                            </connections>
+                        </button>
                         <sections>
                             <tableViewSection id="0Tl-vW-EzG">
                                 <cells>
@@ -190,13 +203,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8be-bn-Qpm">
-                                                    <rect key="frame" x="297" y="8" width="57" height="28"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                                    <rect key="frame" x="301" y="8" width="53" height="28"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                     <state key="normal" title="Reset">
-                                                        <color key="titleColor" name="Red"/>
+                                                        <color key="titleColor" name="Grey"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="resetSection1ButtonTapped:" destination="sq8-ZB-Oek" eventType="touchUpInside" id="uQm-oz-43V"/>
+                                                        <action selector="resetStatusButtonTapped:" destination="sq8-ZB-Oek" eventType="touchUpInside" id="9du-r8-CVl"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHz-Yb-djH">
@@ -285,13 +298,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4af-23-8uJ">
-                                                    <rect key="frame" x="297" y="8" width="57" height="28"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                                    <rect key="frame" x="301" y="8" width="53" height="28"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                     <state key="normal" title="Reset">
-                                                        <color key="titleColor" name="Red"/>
+                                                        <color key="titleColor" name="Grey"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="resetSection2ButtonTapped:" destination="sq8-ZB-Oek" eventType="touchUpInside" id="IYI-y8-Nl8"/>
+                                                        <action selector="resetGenderButtonTapped:" destination="sq8-ZB-Oek" eventType="touchUpInside" id="aW0-kM-TGx"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTZ-cD-fdE">
@@ -396,13 +409,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Filter" id="Rgg-hM-QYW"/>
                     <connections>
-                        <outlet property="resetSection1Button" destination="8be-bn-Qpm" id="TF1-3c-sqU"/>
-                        <outlet property="resetSection2Button" destination="4af-23-8uJ" id="jQN-7R-LGl"/>
+                        <outlet property="applyFiltersButton" destination="F9W-8s-ojB" id="LSl-8a-G1d"/>
+                        <outlet property="resetGenderButton" destination="4af-23-8uJ" id="eF2-Mg-p9o"/>
+                        <outlet property="resetStatusButton" destination="8be-bn-Qpm" id="iIy-qW-nrX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V6M-26-Bgc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2380" y="-563"/>
+            <point key="canvasLocation" x="2379.7101449275365" y="-563.16964285714278"/>
         </scene>
         <!--Locations-->
         <scene sceneID="HoM-kO-jSp">
@@ -483,8 +497,8 @@
         <namedColor name="CellText">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="Red">
-            <color red="0.92000001668930054" green="0.13199999928474426" blue="0.21699999272823334" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="Grey">
+            <color red="0.37099999189376831" green="0.37099999189376831" blue="0.37099999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Text">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -2,10 +2,14 @@ import UIKit
 
 private let reuseIdentifier = "CharacterCell"
 
-protocol CharacterView {
+protocol CharacterView: AnyObject {
     func reloadData()
     func updateData(with characters: [CharacterModel])
     func updateImages(with images: [Int : UIImage])
+}
+
+protocol FilterDataDelegate: AnyObject {
+    func updateFilterData(status: Set<String> , gender: Set<String> )
 }
 
 class CharacterCollectionViewController: UICollectionViewController, UISearchResultsUpdating {
@@ -27,6 +31,11 @@ class CharacterCollectionViewController: UICollectionViewController, UISearchRes
         characterPresenter.attachView(view: self)
         characterPresenter.viewDidLoad()
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("characters \( characterPresenter.statusFilters), \(characterPresenter.genderFilters)")
+        characterPresenter.filterCharacters()
     }
     
     func generateLayout() -> UICollectionViewLayout {
@@ -91,7 +100,19 @@ class CharacterCollectionViewController: UICollectionViewController, UISearchRes
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         characterPresenter.didScroll(scrollView: scrollView, collectionViewHeight: collectionView.contentSize.height)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? FilterTableViewController else { return }
+        destination.filterPresenter.delegate = self
+        print("prepare")
+    }
 
+}
+
+extension CharacterCollectionViewController: FilterDataDelegate {
+    func updateFilterData(status: Set<String>, gender: Set<String>) {
+        characterPresenter.updateFilterData(status: status, gender: gender)
+    }
 }
 
 extension CharacterCollectionViewController: CharacterView {
