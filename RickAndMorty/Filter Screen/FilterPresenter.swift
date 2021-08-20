@@ -8,7 +8,7 @@ class FilterPresenter {
     
     var statusFilters = Set<String>()
     var genderFilters = Set<String>()
-    
+    var savedCellsIndexPaths  = Set<IndexPath>()
     
     func attachView(view: FilterView?) {
         self.filterView = view
@@ -18,10 +18,14 @@ class FilterPresenter {
         if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCell.AccessoryType.none {
             self.filterView?.selectRow(tableView, indexPath: indexPath)
             addToModel(tableView, indexPath: indexPath)
+            print("add index path: \(indexPath)")
+            savedCellsIndexPaths.insert(indexPath)
             
         } else {
             self.filterView?.deselectRow(tableView, indexPath: indexPath)
             removeFromModel(tableView, indexPath: indexPath)
+            print("remove index path: \(indexPath)")
+            savedCellsIndexPaths.remove(indexPath)
         }
         self.filterView?.refreshResetStatusButton()
         self.filterView?.refreshResetGenderButton()
@@ -41,6 +45,7 @@ class FilterPresenter {
             let indexPath = IndexPath(row: cell, section: 0)
             filterView?.deselectRow(tableView, indexPath: indexPath)
             removeFromModel(tableView, indexPath: indexPath)
+            savedCellsIndexPaths.remove(indexPath)
         }
         self.filterView?.refreshResetStatusButton()
     }
@@ -50,12 +55,13 @@ class FilterPresenter {
             let indexPath = IndexPath(row: cell, section: 1)
             filterView?.deselectRow(tableView, indexPath: indexPath)
             removeFromModel(tableView, indexPath: indexPath)
+            savedCellsIndexPaths.remove(indexPath)
         }
         self.filterView?.refreshResetGenderButton()
     }
     
     func applyFilersButtonTapped() {
-        delegate?.updateFilterData(status: statusFilters, gender: genderFilters)
+        delegate?.updateFilterData(status: statusFilters, gender: genderFilters, cellsIndexPaths: savedCellsIndexPaths)
     }
     
     func addToModel(_ tableView: UITableView, indexPath: IndexPath) {
@@ -68,9 +74,6 @@ class FilterPresenter {
         if indexPath.section == 1 {
             genderFilters.insert(celltext ?? " ")
         }
-        
-        print(statusFilters)
-        print(genderFilters)
     }
     
     func removeFromModel(_ tableView: UITableView, indexPath: IndexPath) {
@@ -83,9 +86,28 @@ class FilterPresenter {
         if indexPath.section == 1 {
             genderFilters.remove(celltext ?? " ")
         }
-        
-        print(statusFilters)
-        print(genderFilters)
     }
     
+    func saveSelectedRowsState(tableView: UITableView){
+        for section in 0 ..< tableView.numberOfSections {
+            for cell in 0 ..< tableView.numberOfRows(inSection: section) {
+                let indexPath = IndexPath(row: cell, section: section)
+                let currentCell = tableView.cellForRow(at: indexPath)
+                
+                if currentCell?.accessoryType ==  UITableViewCell.AccessoryType.checkmark {
+                    savedCellsIndexPaths.insert(indexPath)
+                }
+            }
+        }
+        print("save state: \(savedCellsIndexPaths)")
+    }
+    
+    func resumeSelectedRowState(tableView: UITableView) {
+        print("resume state start: \(savedCellsIndexPaths)")
+        for indexPath in savedCellsIndexPaths {
+            print("index: \(indexPath)")
+            filterView?.selectRow(tableView, indexPath: indexPath)
+        }
+        print("resume state finish: \(savedCellsIndexPaths)")
+    }
 }

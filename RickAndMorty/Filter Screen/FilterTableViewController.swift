@@ -25,6 +25,12 @@ class FilterTableViewController: UITableViewController {
         configureButtons()
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        filterPresenter.resumeSelectedRowState(tableView: tableView)
+        refreshResetStatusButton()
+        refreshResetGenderButton()
+    }
 
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if indexPath.row == 0 {
@@ -32,7 +38,7 @@ class FilterTableViewController: UITableViewController {
         }
         return indexPath
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         filterPresenter.didSelectRow(tableView, indexPath: indexPath)
     }
@@ -49,13 +55,13 @@ class FilterTableViewController: UITableViewController {
     
     @IBAction func applyFilersButtonTapped(_ sender: Any) {
         filterPresenter.applyFilersButtonTapped()
+        //filterPresenter.saveSelectedRowsState(tableView: tableView)
         animateResetButton(button: applyFiltersButton)
         print("tapped")
+        navigationController?.popViewController(animated: true)
     }
     
     func configureButtons() {
-        resetStatusButton.isEnabled = false
-        resetGenderButton.isEnabled = false
         
         resetStatusButton.setTitleColor(UIColor(named: "Red"), for: .normal)
         resetStatusButton.setTitleColor(UIColor(named: "Grey"), for: .disabled)
@@ -63,19 +69,16 @@ class FilterTableViewController: UITableViewController {
         resetGenderButton.setTitleColor(UIColor(named: "Red"), for: .normal)
         resetGenderButton.setTitleColor(UIColor(named: "Grey"), for: .disabled)
         
+        refreshResetStatusButton()
+        refreshResetGenderButton()
+        
+        
+//        applyFiltersButton.backgroundColor = UIColor(named: "White")
+//        applyFiltersButton.layer.borderColor = UIColor(named: "Title")?.cgColor
+//        applyFiltersButton.layer.cornerRadius = 4.0
+        
     }
-    // MARK: - Table view data source
-
     
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let headerCell = tableView.dequeueReusableCell(withIdentifier: "Header", for: indexPath) as! FilterTableViewCell
-//
-//        headerCell.selectionStyle = .none
-//        configureCell(tableView, indexPath: indexPath)
-//        return headerCell
-//    }
-//
-
 }
 
 extension FilterTableViewController: FilterView {
@@ -87,9 +90,7 @@ extension FilterTableViewController: FilterView {
         
         tableView.cellForRow(at: indexPath)?.textLabel?.textColor = UIColor(named: "Title")
         tableView.cellForRow(at: indexPath)?.tintColor = UIColor(named: "Title")
-
-        tableView.cellForRow(at: indexPath)?.selectedBackgroundView?.alpha = 0.4
-        
+        tableView.cellForRow(at: indexPath)?.selectionStyle = .none
         refreshResetStatusButton()
         
     }
@@ -98,7 +99,7 @@ extension FilterTableViewController: FilterView {
         
         tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
         tableView.cellForRow(at: indexPath)?.textLabel?.textColor = UIColor(named: "Text")
-        tableView.cellForRow(at: indexPath)?.selectedBackgroundView?.alpha = 0.4
+        tableView.cellForRow(at: indexPath)?.selectionStyle = .none
     
     }
     
@@ -107,7 +108,6 @@ extension FilterTableViewController: FilterView {
             resetStatusButton.isEnabled = false
             resetStatusButton.titleLabel?.font = UIFont.systemFont(ofSize: 21)
         } else {
-            
             resetStatusButton.isEnabled = true
             resetStatusButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 21)
             

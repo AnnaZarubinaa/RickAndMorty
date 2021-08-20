@@ -180,7 +180,7 @@
                         <color key="sectionIndexBackgroundColor" name="Background"/>
                         <color key="sectionIndexTrackingBackgroundColor" name="Background"/>
                         <button key="tableFooterView" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="F9W-8s-ojB">
-                            <rect key="frame" x="0.0" y="463.5" width="414" height="71"/>
+                            <rect key="frame" x="0.0" y="463.5" width="414" height="129"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" name="Background"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
