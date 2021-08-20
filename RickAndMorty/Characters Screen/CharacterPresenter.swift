@@ -129,7 +129,6 @@ class CharacterPresenter {
             retrieveCharacters(from: searchUrl, isFiltered: true)
         } else {
             isbeingFiltered = false
-            //viewDidLoad()
         }
     }
     
