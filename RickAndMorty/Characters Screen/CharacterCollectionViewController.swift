@@ -105,6 +105,8 @@ class CharacterCollectionViewController: UICollectionViewController, UISearchRes
         guard let destination = segue.destination as? FilterTableViewController else { return }
         destination.filterPresenter.delegate = self
         destination.filterPresenter.savedCellsIndexPaths = characterPresenter.savedCellsIndexPaths
+        destination.filterPresenter.statusFilters = characterPresenter.statusFilters
+        destination.filterPresenter.genderFilters = characterPresenter.genderFilters
     }
 
 }

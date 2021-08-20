@@ -22,11 +22,14 @@ class FilterTableViewController: UITableViewController {
         filterPresenter.attachView(view: self)
         tableView.backgroundColor = UIColor(named: "Background")
         
-        tableView.cellForRow(at: [0,1])?.accessoryType = UITableViewCell.AccessoryType.checkmark
-        filterPresenter.resumeSelectedRowState(tableView: tableView)
         configureButtons()
         
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        filterPresenter.resumeSelectedRowState(tableView: tableView)
+        refreshResetStatusButton()
+        refreshResetGenderButton()
     }
 
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
