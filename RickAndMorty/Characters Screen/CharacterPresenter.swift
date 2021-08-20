@@ -16,6 +16,7 @@ class CharacterPresenter {
     
     var statusFilters = Set<String>()
     var genderFilters = Set<String>()
+    var savedCellsIndexPaths  = Set<IndexPath>()
     
     init (model: CharacterResponseModel ) {
         self.characterResponse = model
@@ -30,9 +31,10 @@ class CharacterPresenter {
         retrieveCharacters(from: SectionURL.shared.characters, isFiltered: false)
     }
 
-    func updateFilterData(status: Set<String>, gender: Set<String>) {
+    func updateFilterData(status: Set<String>, gender: Set<String>, cellsIndexPaths: Set<IndexPath>) {
         statusFilters = status
         genderFilters = gender
+        savedCellsIndexPaths = cellsIndexPaths
     }
 
     
@@ -45,9 +47,7 @@ class CharacterPresenter {
                 case .success(let charactersInfo):
                     DispatchQueue.main.async {
                         if isFiltered {
-                            self.filteredCharacters = self.filteredCharacters.clear()
                             self.filteredCharacters.info = charactersInfo.info
-                            //self.filteredCharacters = self.filteredCharacters.clear()
                             self.filteredCharacters.results.append(contentsOf: charactersInfo.results)
                             print("SEARCH: \(self.filteredCharacters.info)")
                             self.characterView?.updateData(with: self.filteredCharacters.results)
@@ -93,20 +93,26 @@ class CharacterPresenter {
     
     func filterCharacters() {
         guard !statusFilters.isEmpty || !genderFilters.isEmpty else { return }
-            
-        let statusString = "status=" + statusFilters.joined(separator: "&")
-        let genderString = "gender=" + genderFilters.joined(separator: "&")
-        let searchUrl = SectionURL.shared.characters + "?" + statusString + "&" + genderString
+
+        let searchUrl = SectionURL.shared.characters + "/?" + getFilterUrlString()
         print("search url \(searchUrl)")
         isbeingFiltered = true
+        self.filteredCharacters = self.filteredCharacters.clear()
         retrieveCharacters(from: searchUrl, isFiltered: true)
         
     }
     
     func didScroll(scrollView: UIScrollView, collectionViewHeight: CGFloat) {
         let position = scrollView.contentOffset.y
-        if !isbeingFiltered && (position > (collectionViewHeight - 100 - scrollView.frame.size.height)) && self.characterResponse.info.next != nil && isDataRetrieving == false {
-            retrieveCharacters(from: self.characterResponse.info.next!, isFiltered: false)
+        if (position > (collectionViewHeight - 100 - scrollView.frame.size.height)) && self.characterResponse.info.next != nil && isDataRetrieving == false {
+            
+            if isbeingFiltered {
+                print("fetch characters")
+                retrieveCharacters(from: self.filteredCharacters.info.next ?? " ", isFiltered: true)
+            } else {
+                retrieveCharacters(from: self.characterResponse.info.next ?? " ", isFiltered: false)
+            }
+            
         }
     }
     
@@ -114,12 +120,22 @@ class CharacterPresenter {
         if let searchString = searchController.searchBar.text,
            searchString.isEmpty == false {
             isbeingFiltered = true
-            let searchUrl = SectionURL.shared.characters + "?name=" + searchString.replacingOccurrences(of: " ", with: "%20")
+            var searchUrl = SectionURL.shared.characters + "/?name=" + searchString.replacingOccurrences(of: " ", with: "%20")
+            if !statusFilters.isEmpty || !genderFilters.isEmpty {
+                searchUrl += "&" + getFilterUrlString()
+            }
             print(searchUrl)
+            self.filteredCharacters = self.filteredCharacters.clear()
             retrieveCharacters(from: searchUrl, isFiltered: true)
         } else {
             isbeingFiltered = false
-            viewDidLoad()
+            //viewDidLoad()
         }
+    }
+    
+    func getFilterUrlString() -> String {
+        let statusString = "status=" + statusFilters.joined(separator: "&")
+        let genderString = "gender=" + genderFilters.joined(separator: "&")
+        return statusString + "&" + genderString
     }
 }

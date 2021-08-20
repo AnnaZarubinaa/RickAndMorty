@@ -9,7 +9,7 @@ protocol CharacterView: AnyObject {
 }
 
 protocol FilterDataDelegate: AnyObject {
-    func updateFilterData(status: Set<String> , gender: Set<String> )
+    func updateFilterData(status: Set<String> , gender: Set<String>, cellsIndexPaths: Set<IndexPath> )
 }
 
 class CharacterCollectionViewController: UICollectionViewController, UISearchResultsUpdating {
@@ -104,14 +104,14 @@ class CharacterCollectionViewController: UICollectionViewController, UISearchRes
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? FilterTableViewController else { return }
         destination.filterPresenter.delegate = self
-        print("prepare")
+        destination.filterPresenter.savedCellsIndexPaths = characterPresenter.savedCellsIndexPaths
     }
 
 }
 
 extension CharacterCollectionViewController: FilterDataDelegate {
-    func updateFilterData(status: Set<String>, gender: Set<String>) {
-        characterPresenter.updateFilterData(status: status, gender: gender)
+    func updateFilterData(status: Set<String>, gender: Set<String>, cellsIndexPaths: Set<IndexPath>) {
+        characterPresenter.updateFilterData(status: status, gender: gender, cellsIndexPaths: cellsIndexPaths)
     }
 }
 
