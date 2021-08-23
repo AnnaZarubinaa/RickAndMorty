@@ -12,7 +12,7 @@ protocol FilterDataDelegate: AnyObject {
     func updateFilterData(status: Set<String> , gender: Set<String>, cellsIndexPaths: Set<IndexPath> )
 }
 
-class CharacterCollectionViewController: UICollectionViewController, UISearchResultsUpdating {
+class CharacterCollectionViewController: UICollectionViewController {
     
     let characterPresenter = CharacterPresenter(model: CharacterResponseModel())
     let searchController = UISearchController()
@@ -29,13 +29,13 @@ class CharacterCollectionViewController: UICollectionViewController, UISearchRes
         configureSearchController()
         
         characterPresenter.attachView(view: self)
-        characterPresenter.viewDidLoad()
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         print("characters \( characterPresenter.statusFilters), \(characterPresenter.genderFilters)")
-        characterPresenter.filterCharacters()
+        characterPresenter.loadCharacters()
+
     }
     
     func generateLayout() -> UICollectionViewLayout {
@@ -82,6 +82,7 @@ class CharacterCollectionViewController: UICollectionViewController, UISearchRes
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Enter name"
         let textFieldInsideSearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
+        
         textFieldInsideSearchBar?.textColor = UIColor(named: "Title")
     }
     
@@ -90,10 +91,6 @@ class CharacterCollectionViewController: UICollectionViewController, UISearchRes
         cell.characterCellLabel.textColor = UIColor(named: "Background")
         cell.characterCellLabel.backgroundColor = UIColor.white.withAlphaComponent(0.6)
     }
-
-    func updateSearchResults(for searchController: UISearchController) {
-        characterPresenter.updateSearchResult(for: searchController)
-    }
   
     // MARK: UICollectionViewDelegate
     
@@ -101,6 +98,10 @@ class CharacterCollectionViewController: UICollectionViewController, UISearchRes
         characterPresenter.didScroll(scrollView: scrollView, collectionViewHeight: collectionView.contentSize.height)
     }
     
+//    override func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+//        print("scroll to top")
+//    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? FilterTableViewController else { return }
         destination.filterPresenter.delegate = self
@@ -109,6 +110,15 @@ class CharacterCollectionViewController: UICollectionViewController, UISearchRes
         destination.filterPresenter.genderFilters = characterPresenter.genderFilters
     }
 
+}
+
+extension CharacterCollectionViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if searchController.isActive {
+            characterPresenter.updateSearchResult(for: searchController)
+        }
+    }
+    
 }
 
 extension CharacterCollectionViewController: FilterDataDelegate {
