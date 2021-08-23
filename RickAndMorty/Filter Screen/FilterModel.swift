@@ -1,28 +1,13 @@
 import Foundation
 
-struct CharacterFilter {
-    var status: Set<Status>
-    var gender: Set<Gender>
+struct CharacterFilterModel {
+    var status: Set<String>
+    var gender: Set<String>
     
     init() {
         status = []
         gender = []
     }
-}
-
-enum Status: String {
-    case alive = "alive"
-    case dead = "dead"
-    case unknown = "unknown"
-    case none = ""
-}
-
-enum Gender: String {
-    case female = "female"
-    case male = "male"
-    case genderless = "genderless"
-    case unknown = "unknown"
-    case none = ""
 }
 
 class Bindable<T> {
