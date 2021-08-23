@@ -15,18 +15,21 @@ class FilterPresenter {
     }
     
     func didSelectRow(_ tableView: UITableView, indexPath: IndexPath) {
+        if indexPath.section == 0 && tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCell.AccessoryType.none {
+            
+        }
+        
         if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCell.AccessoryType.none {
             self.filterView?.selectRow(tableView, indexPath: indexPath)
             addToModel(tableView, indexPath: indexPath)
-            print("add index path: \(indexPath)")
             savedCellsIndexPaths.insert(indexPath)
             
         } else {
             self.filterView?.deselectRow(tableView, indexPath: indexPath)
             removeFromModel(tableView, indexPath: indexPath)
-            print("remove index path: \(indexPath)")
             savedCellsIndexPaths.remove(indexPath)
         }
+        
         self.filterView?.refreshResetStatusButton()
         self.filterView?.refreshResetGenderButton()
         
@@ -99,15 +102,12 @@ class FilterPresenter {
                 }
             }
         }
-        print("save state: \(savedCellsIndexPaths)")
     }
     
     func resumeSelectedRowState(tableView: UITableView) {
-        print("resume state start: \(savedCellsIndexPaths)")
         for indexPath in savedCellsIndexPaths {
-            print("index: \(indexPath)")
             filterView?.selectRow(tableView, indexPath: indexPath)
         }
-        print("resume state finish: \(savedCellsIndexPaths)")
     }
+
 }

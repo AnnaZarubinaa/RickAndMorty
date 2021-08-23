@@ -36,6 +36,15 @@ class FilterTableViewController: UITableViewController {
         if indexPath.row == 0 {
             return nil
         }
+        
+        for vcip in tableView.indexPathsForSelectedRows ?? [] {
+            if vcip.section == indexPath.section && vcip.item != indexPath.item {
+                //tableView.deselectRow(at: vcip, animated: false)
+                print(vcip)
+                return nil
+            }
+        }
+        
         return indexPath
     }
 
@@ -90,6 +99,7 @@ extension FilterTableViewController: FilterView {
         
         tableView.cellForRow(at: indexPath)?.textLabel?.textColor = UIColor(named: "Title")
         tableView.cellForRow(at: indexPath)?.tintColor = UIColor(named: "Title")
+        tableView.cellForRow(at: indexPath)?.backgroundView?.backgroundColor = .none
         tableView.cellForRow(at: indexPath)?.selectionStyle = .none
         refreshResetStatusButton()
         
@@ -97,6 +107,7 @@ extension FilterTableViewController: FilterView {
     
     func deselectRow(_ tableView: UITableView, indexPath: IndexPath) {
         
+        tableView.deselectRow(at: indexPath, animated: false)
         tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
         tableView.cellForRow(at: indexPath)?.textLabel?.textColor = UIColor(named: "Text")
         tableView.cellForRow(at: indexPath)?.selectionStyle = .none
