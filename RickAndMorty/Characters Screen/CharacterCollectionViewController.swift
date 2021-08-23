@@ -33,9 +33,7 @@ class CharacterCollectionViewController: UICollectionViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("characters \( characterPresenter.statusFilters), \(characterPresenter.genderFilters)")
         characterPresenter.loadCharacters()
-
     }
     
     func generateLayout() -> UICollectionViewLayout {
@@ -106,8 +104,8 @@ class CharacterCollectionViewController: UICollectionViewController {
         guard let destination = segue.destination as? FilterTableViewController else { return }
         destination.filterPresenter.delegate = self
         destination.filterPresenter.savedCellsIndexPaths = characterPresenter.savedCellsIndexPaths
-        destination.filterPresenter.statusFilters = characterPresenter.statusFilters
-        destination.filterPresenter.genderFilters = characterPresenter.genderFilters
+        destination.filterPresenter.filters.status = characterPresenter.statusFilters
+        destination.filterPresenter.filters.gender = characterPresenter.genderFilters
     }
 
 }

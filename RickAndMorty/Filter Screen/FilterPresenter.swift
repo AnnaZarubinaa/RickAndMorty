@@ -6,8 +6,8 @@ class FilterPresenter {
     weak var filterView: FilterView?
     weak var delegate: FilterDataDelegate?
     
-    var statusFilters = Set<String>()
-    var genderFilters = Set<String>()
+    var filters = CharacterFilterModel()
+    
     var savedCellsIndexPaths  = Set<IndexPath>()
     
     func attachView(view: FilterView?) {
@@ -36,11 +36,11 @@ class FilterPresenter {
     }
     
     func getStatusFilterElementsCount() -> Int {
-        return statusFilters.count
+        return filters.status.count
     }
     
     func getGenderFilterElementsCount() -> Int {
-        return genderFilters.count
+        return filters.gender.count
     }
     
     func resetStatusButtonTapped(_ tableView: UITableView) {
@@ -64,18 +64,18 @@ class FilterPresenter {
     }
     
     func applyFilersButtonTapped() {
-        delegate?.updateFilterData(status: statusFilters, gender: genderFilters, cellsIndexPaths: savedCellsIndexPaths)
+        delegate?.updateFilterData(status: filters.status, gender: filters.gender, cellsIndexPaths: savedCellsIndexPaths)
     }
     
     func addToModel(_ tableView: UITableView, indexPath: IndexPath) {
         let celltext = tableView.cellForRow(at: indexPath)?.textLabel?.text?.lowercased()
         
         if indexPath.section == 0 {
-            statusFilters.insert(celltext ?? " ")
+            filters.status.insert(celltext ?? " ")
         }
         
         if indexPath.section == 1 {
-            genderFilters.insert(celltext ?? " ")
+            filters.gender.insert(celltext ?? " ")
         }
     }
     
@@ -83,11 +83,11 @@ class FilterPresenter {
         let celltext = tableView.cellForRow(at: indexPath)?.textLabel?.text?.lowercased()
         
         if indexPath.section == 0 {
-            statusFilters.remove(celltext ?? " ")
+            filters.status.remove(celltext ?? " ")
         }
         
         if indexPath.section == 1 {
-            genderFilters.remove(celltext ?? " ")
+            filters.gender.remove(celltext ?? " ")
         }
     }
     
