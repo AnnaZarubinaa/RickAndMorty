@@ -26,8 +26,7 @@ class CharacterCollectionViewController: UICollectionViewController {
         
         collectionView.setCollectionViewLayout(generateLayout(), animated: false)
         
-        configureSearchController()
-        
+        configureSearchController()        
         characterPresenter.attachView(view: self)
 
     }
