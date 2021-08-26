@@ -13,7 +13,7 @@
             <objects>
                 <collectionViewController id="ft3-L3-e4Y" customClass="SectionCollectionViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="y4h-xG-5HX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="Background"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YjC-3h-m6d">
@@ -102,7 +102,7 @@
             <objects>
                 <collectionViewController id="oMz-Ww-Xzh" customClass="CharacterCollectionViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" id="ouG-9s-xGr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="Background"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xpq-uc-i9g">
@@ -174,7 +174,7 @@
             <objects>
                 <tableViewController id="sq8-ZB-Oek" customClass="FilterTableViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="6Pr-12-1Gr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="sectionIndexColor" name="Title"/>
                         <color key="sectionIndexBackgroundColor" name="Background"/>
@@ -423,7 +423,7 @@
             <objects>
                 <collectionViewController id="AyZ-28-Ko1" customClass="LocationCollectionViewController" customModule="RickAndMorty" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="z9P-Kw-TO8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="Background"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zdi-H4-Uk2">
@@ -434,20 +434,23 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LocationCell" id="Elo-GF-nsh" customClass="LocationCollectionViewCell" customModule="RickAndMorty" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                <rect key="frame" x="-49" y="0.0" width="512" height="237.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.90000000000000002" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="n8P-Dy-KrC">
-                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                <collectionViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="n8P-Dy-KrC">
+                                    <rect key="frame" x="0.0" y="0.0" width="512" height="237.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sectionLocations" translatesAutoresizingMaskIntoConstraints="NO" id="ZFj-kG-Bfv">
+                                            <rect key="frame" x="0.0" y="0.0" width="512" height="237.5"/>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzT-XL-I9d">
-                                            <rect key="frame" x="35.5" y="51.5" width="57.5" height="25.5"/>
+                                            <rect key="frame" x="227.5" y="106" width="57.5" height="25.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                             <color key="textColor" name="CellText"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2x-fe-R0Y">
-                                            <rect key="frame" x="45.5" y="77" width="37.5" height="21"/>
+                                            <rect key="frame" x="237.5" y="131.5" width="37.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" name="CellText"/>
                                             <nil key="highlightedColor"/>
@@ -456,9 +459,13 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="R2x-fe-R0Y" firstAttribute="top" secondItem="dzT-XL-I9d" secondAttribute="bottom" id="40W-8Z-jdw"/>
+                                        <constraint firstItem="ZFj-kG-Bfv" firstAttribute="leading" secondItem="n8P-Dy-KrC" secondAttribute="leading" id="4GE-Q8-QuF"/>
                                         <constraint firstItem="R2x-fe-R0Y" firstAttribute="centerX" secondItem="dzT-XL-I9d" secondAttribute="centerX" id="8Kp-QL-mZQ"/>
                                         <constraint firstItem="dzT-XL-I9d" firstAttribute="centerX" secondItem="n8P-Dy-KrC" secondAttribute="centerX" id="FM7-C1-ewU"/>
+                                        <constraint firstItem="ZFj-kG-Bfv" firstAttribute="top" secondItem="n8P-Dy-KrC" secondAttribute="top" id="FUV-c8-Owj"/>
                                         <constraint firstItem="dzT-XL-I9d" firstAttribute="centerY" secondItem="n8P-Dy-KrC" secondAttribute="centerY" id="WTG-eZ-SOs"/>
+                                        <constraint firstAttribute="bottom" secondItem="ZFj-kG-Bfv" secondAttribute="bottom" id="qYC-b8-dFa"/>
+                                        <constraint firstAttribute="trailing" secondItem="ZFj-kG-Bfv" secondAttribute="trailing" id="t07-CG-K6J"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <connections>
@@ -483,7 +490,7 @@
             <objects>
                 <collectionViewController id="qkY-yg-O4N" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="461-dD-Zco">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="Background"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PQK-wz-cgM">
@@ -516,6 +523,7 @@
     </scenes>
     <resources>
         <image name="icons8-filter-100" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="sectionLocations" width="512" height="237.5"/>
         <namedColor name="Background">
             <color red="0.12999999523162842" green="0.12800000607967377" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
