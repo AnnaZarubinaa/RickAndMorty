@@ -94,17 +94,21 @@ class CharacterCollectionViewController: UICollectionViewController {
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         characterPresenter.didScroll(scrollView: scrollView, collectionViewHeight: collectionView.contentSize.height)
     }
-    
-//    override func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
-//        print("scroll to top")
-//    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? FilterTableViewController else { return }
-        destination.filterPresenter.delegate = self
-        destination.filterPresenter.savedCellsIndexPaths = characterPresenter.savedCellsIndexPaths
-        destination.filterPresenter.filters.status = characterPresenter.statusFilters
-        destination.filterPresenter.filters.gender = characterPresenter.genderFilters
+        if let destinationFilter = segue.destination as? FilterTableViewController {
+            destinationFilter.filterPresenter.delegate = self
+            destinationFilter.filterPresenter.savedCellsIndexPaths = characterPresenter.savedCellsIndexPaths
+            destinationFilter.filterPresenter.filters.status = characterPresenter.statusFilters
+            destinationFilter.filterPresenter.filters.gender = characterPresenter.genderFilters
+        }
+        
+        if let destinationDetails = segue.destination as? CharacterDetailsViewController,
+           let indexPath = collectionView.indexPathsForSelectedItems {
+             //let currentCell = collectionView.cellForItem(at: indexPath[0])
+             destinationDetails.characterDetailsPresenter.character = characters[indexPath[0].row]
+             destinationDetails.characterDetailsPresenter.characterImage = images[indexPath[0].row + 1] ?? UIImage()
+        }
     }
 
 }

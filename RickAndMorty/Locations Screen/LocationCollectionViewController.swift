@@ -13,7 +13,6 @@ class LocationCollectionViewController: UICollectionViewController {
 
     let disposeBag = DisposeBag()
     let searchController = UISearchController()
-    let search = BehaviorSubject(value: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +26,8 @@ class LocationCollectionViewController: UICollectionViewController {
         configureSearchController()
         setupCellTapHandling()
         setupScrolling()
+        setupSearch()
+        
     }
 
     func generateLayout() -> UICollectionViewLayout {
@@ -84,29 +85,16 @@ class LocationCollectionViewController: UICollectionViewController {
 
             if offSetY > (contentHeight - self.collectionView.frame.size.height - 100) {
                 self.locationPresenter.didScroll()
+                
             }
         }
     }
     
     func setupSearch() {
-//        let results = searchController.searchBar.rx.text.orEmpty
-//            .throttle(RxTimeInterval(0.5), scheduler: MainScheduler.instance)
-//            .distinctUntilChanged()
-//            .flatMapLatest { query -> Observable<NflPlayerStats> in
-//          if query.isEmpty {
-//            return .just([])
-//          }
-//          return ApiController.shared.search(search: query)
-//            .catchErrorJustReturn([])
-//        }
-//        .observeOn(MainScheduler.instance)
-//
-//      results
-//        .bind(to: collectionView.rx.items(cellIdentifier: reuseIdentifier, cellType: LocationCollectionViewCell.self)) {
-//          (index, location, cell) in
-//          cell.setup(for: location)
-//        }
-//        .disposed(by: disposeBag)
+        searchController.searchBar.rx.text.subscribe(onNext: { (text) in
+            print("search \(text ?? " ")")
+            
+        }).disposed(by: disposeBag)
 
     }
 
@@ -137,7 +125,28 @@ extension LocationCollectionViewController: LocationView {
 
 extension LocationCollectionViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        search.onNext(searchController.searchBar.text ?? "")
+            
+//        let results = searchController.searchBar.rx.text.orEmpty.debounce(0.5, scheduler: MainScheduler.instance)
+//
+//
+//            .throttle(0.5, scheduler: MainScheduler.instance)
+//            .distinctUntilChanged()
+//            .flatMapLatest { query -> Observable<NflPlayerStats> in
+//                  if query.isEmpty {
+//                    return .just([])
+//                  }
+//                  return ApiController.shared.search(search: query)
+//                    .catchErrorJustReturn([])
+//                }
+//                .observeOn(MainScheduler.instance)
+//
+//          results
+//            .bind(to: collectionView.rx.items(cellIdentifier: reuseIdentifier, cellType: LocationCollectionViewCell.self)) {
+//              (index, location, cell) in
+//              cell.setup(for: location)
+//            }
+//            .disposed(by: disposeBag)
+        
     }
    
 }

@@ -39,8 +39,6 @@ class FilterTableViewController: UITableViewController {
         
         for vcip in tableView.indexPathsForSelectedRows ?? [] {
             if vcip.section == indexPath.section && vcip.item != indexPath.item {
-                //tableView.deselectRow(at: vcip, animated: false)
-                print(vcip)
                 return nil
             }
         }

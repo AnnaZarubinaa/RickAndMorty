@@ -27,6 +27,8 @@
 		958AC14226C829FA009FAD55 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 958AC14126C829FA009FAD55 /* Colors.xcassets */; };
 		958AC14526C82E81009FAD55 /* CharacterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958AC14426C82E81009FAD55 /* CharacterCollectionViewController.swift */; };
 		958AC14726C82E99009FAD55 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958AC14626C82E99009FAD55 /* CharacterCollectionViewCell.swift */; };
+		95C8CE9C26DCFFD700950CD1 /* CharacterDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8CE9B26DCFFD700950CD1 /* CharacterDetailsPresenter.swift */; };
+		95C8CE9E26DD0FC400950CD1 /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C8CE9D26DD0FC400950CD1 /* CharacterDetailsViewController.swift */; };
 		95D5FCBF26CBB191000BDF4C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D5FCBE26CBB191000BDF4C /* NetworkService.swift */; };
 		95D5FCC226CBC636000BDF4C /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D5FCC126CBC636000BDF4C /* CharacterModel.swift */; };
 		95D5FCC426CBC660000BDF4C /* CharacterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D5FCC326CBC660000BDF4C /* CharacterPresenter.swift */; };
@@ -55,6 +57,8 @@
 		958AC14126C829FA009FAD55 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		958AC14426C82E81009FAD55 /* CharacterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewController.swift; sourceTree = "<group>"; };
 		958AC14626C82E99009FAD55 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
+		95C8CE9B26DCFFD700950CD1 /* CharacterDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsPresenter.swift; sourceTree = "<group>"; };
+		95C8CE9D26DD0FC400950CD1 /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
 		95D5FCBE26CBB191000BDF4C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		95D5FCC126CBC636000BDF4C /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 		95D5FCC326CBC660000BDF4C /* CharacterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterPresenter.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 				958AC14326C82DD0009FAD55 /* Section Screen */,
 				95D5FCC026CBC4EF000BDF4C /* Characters Screen */,
 				95D5FCBE26CBB191000BDF4C /* NetworkService.swift */,
+				95C8CE9826DCFE2800950CD1 /* Character Details Screen */,
 				9528DDDC26CD2DB000841BF4 /* Filter Screen */,
 				957F160026D3D67200C1571C /* Locations Screen */,
 			);
@@ -149,6 +154,15 @@
 				958AC13F26C8070D009FAD55 /* SectionPresenter.swift */,
 			);
 			path = "Section Screen";
+			sourceTree = "<group>";
+		};
+		95C8CE9826DCFE2800950CD1 /* Character Details Screen */ = {
+			isa = PBXGroup;
+			children = (
+				95C8CE9D26DD0FC400950CD1 /* CharacterDetailsViewController.swift */,
+				95C8CE9B26DCFFD700950CD1 /* CharacterDetailsPresenter.swift */,
+			);
+			path = "Character Details Screen";
 			sourceTree = "<group>";
 		};
 		95D5FCC026CBC4EF000BDF4C /* Characters Screen */ = {
@@ -299,9 +313,11 @@
 				9562E88A26D3E184009D77AE /* LocationCollectionViewCell.swift in Sources */,
 				958AC14026C8070D009FAD55 /* SectionPresenter.swift in Sources */,
 				95D5FCC426CBC660000BDF4C /* CharacterPresenter.swift in Sources */,
+				95C8CE9E26DD0FC400950CD1 /* CharacterDetailsViewController.swift in Sources */,
 				95769C9D26D4F819001A3089 /* LocationPresenter.swift in Sources */,
 				958AC14526C82E81009FAD55 /* CharacterCollectionViewController.swift in Sources */,
 				9528DDDB26CD2DAC00841BF4 /* FilterPresenter.swift in Sources */,
+				95C8CE9C26DCFFD700950CD1 /* CharacterDetailsPresenter.swift in Sources */,
 				957F160226D3D69900C1571C /* LocationModel.swift in Sources */,
 				958AC12826C802DD009FAD55 /* SceneDelegate.swift in Sources */,
 			);

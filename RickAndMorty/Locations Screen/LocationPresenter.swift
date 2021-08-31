@@ -44,6 +44,12 @@ class LocationPresenter {
     }
     
     func didScroll() {
-        retrieveLocations(from: self.locationResponse.info.next ?? " ")
+        if self.locationResponse.info.next != nil && isDataRetrieving == false {
+            retrieveLocations(from: self.locationResponse.info.next! )
+        }
+    }
+    
+    func searchLocation(text: String) {
+        
     }
 }
