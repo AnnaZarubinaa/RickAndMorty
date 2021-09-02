@@ -2,7 +2,7 @@ import UIKit
 
 private let reuseIdentifier = "SectionCell"
 
-protocol SectionView {
+protocol SectionView: AnyObject {
     func onItemsRetrieval(data: SectionModel)
     func openNewScreen(indexPath: IndexPath)
 }
@@ -55,7 +55,6 @@ class SectionCollectionViewController: UICollectionViewController {
 
 extension SectionCollectionViewController: SectionView {
     func onItemsRetrieval(data: SectionModel) {
-        print("View recieves the result from the Presenter.")
         sectionPresenter.sections = data
         self.collectionView.reloadData()
     }
@@ -76,7 +75,6 @@ extension SectionCollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return sectionPresenter.sections.sectionsName.count
     }
 
