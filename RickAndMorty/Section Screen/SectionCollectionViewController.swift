@@ -14,13 +14,13 @@ class SectionCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.setCollectionViewLayout(generateLayoutForPortraitMode(), animated: false)
+        collectionView.setCollectionViewLayout(generateLayout(), animated: false)
 
         sectionPresenter.attachView( view: self)
         sectionPresenter.viewDidLoad()
     }
     
-    func generateLayoutForPortraitMode() -> UICollectionViewLayout {
+    func generateLayout() -> UICollectionViewLayout {
         let spacing: CGFloat = 30
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))

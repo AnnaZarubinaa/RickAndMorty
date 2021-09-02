@@ -36,8 +36,8 @@ struct InfoModel: Codable {
         next = ""
         prev = ""
     }
-    
 }
+
 struct CharacterModel: Codable {
     let id: Int
     let name: String
