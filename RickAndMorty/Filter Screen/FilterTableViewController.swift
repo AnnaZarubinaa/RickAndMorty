@@ -62,7 +62,6 @@ class FilterTableViewController: UITableViewController {
     
     @IBAction func applyFilersButtonTapped(_ sender: Any) {
         filterPresenter.applyFilersButtonTapped()
-        //filterPresenter.saveSelectedRowsState(tableView: tableView)
         animateResetButton(button: applyFiltersButton)
         print("tapped")
         navigationController?.popViewController(animated: true)
@@ -78,11 +77,6 @@ class FilterTableViewController: UITableViewController {
         
         refreshResetStatusButton()
         refreshResetGenderButton()
-        
-        
-//        applyFiltersButton.backgroundColor = UIColor(named: "White")
-//        applyFiltersButton.layer.borderColor = UIColor(named: "Title")?.cgColor
-//        applyFiltersButton.layer.cornerRadius = 4.0
         
     }
     

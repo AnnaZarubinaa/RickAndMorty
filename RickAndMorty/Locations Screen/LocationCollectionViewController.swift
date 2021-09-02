@@ -60,7 +60,6 @@ class LocationCollectionViewController: UICollectionViewController {
     func configureSearchController() {
         navigationItem.searchController = searchController
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Enter name"
         let textFieldInsideSearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
         
@@ -121,32 +120,4 @@ extension LocationCollectionViewController: LocationView {
             .disposed(by: disposeBag)
         
     }
-}
-
-extension LocationCollectionViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-            
-//        let results = searchController.searchBar.rx.text.orEmpty.debounce(0.5, scheduler: MainScheduler.instance)
-//
-//
-//            .throttle(0.5, scheduler: MainScheduler.instance)
-//            .distinctUntilChanged()
-//            .flatMapLatest { query -> Observable<NflPlayerStats> in
-//                  if query.isEmpty {
-//                    return .just([])
-//                  }
-//                  return ApiController.shared.search(search: query)
-//                    .catchErrorJustReturn([])
-//                }
-//                .observeOn(MainScheduler.instance)
-//
-//          results
-//            .bind(to: collectionView.rx.items(cellIdentifier: reuseIdentifier, cellType: LocationCollectionViewCell.self)) {
-//              (index, location, cell) in
-//              cell.setup(for: location)
-//            }
-//            .disposed(by: disposeBag)
-        
-    }
-   
 }

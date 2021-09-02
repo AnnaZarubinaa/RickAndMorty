@@ -105,7 +105,6 @@ class CharacterCollectionViewController: UICollectionViewController {
         
         if let destinationDetails = segue.destination as? CharacterDetailsViewController,
            let indexPath = collectionView.indexPathsForSelectedItems {
-             //let currentCell = collectionView.cellForItem(at: indexPath[0])
              destinationDetails.characterDetailsPresenter.character = characters[indexPath[0].row]
              destinationDetails.characterDetailsPresenter.characterImage = images[indexPath[0].row + 1] ?? UIImage()
         }

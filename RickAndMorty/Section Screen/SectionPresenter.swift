@@ -1,14 +1,8 @@
 import Foundation
 
-//protocol SectionViewPresenter {
-//    //init(view: SectionView)
-//    func viewDidLoad()
-//    func didSelectItem(indexPath: IndexPath)
-//}
-
 class SectionPresenter {
     
-    var sectionView: SectionView? //need to be weak
+    weak var sectionView: SectionView? //need to be weak
     var sections : SectionModel
     
     init (model: SectionModel) {
